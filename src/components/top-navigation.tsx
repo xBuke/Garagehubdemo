@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Bell, Settings } from 'lucide-react';
+import { Bell, Settings, Languages } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useTranslation, setLanguage, getCurrentLanguage } from '@/lib/i18n';
 
 const navigation = [
   { name: 'Dashboard', href: '/' },
@@ -15,9 +16,15 @@ const navigation = [
 ];
 
 export function TopNavigation() {
+  const { t, language } = useTranslation();
   const pathname = usePathname();
   const [urgentCount, setUrgentCount] = useState(3);
   const [shouldShake, setShouldShake] = useState(false);
+
+  const toggleLanguage = () => {
+    const newLanguage = language === 'en' ? 'hr' : 'en';
+    setLanguage(newLanguage);
+  };
 
   // Simulate receiving urgent notifications
   useEffect(() => {
@@ -70,8 +77,20 @@ export function TopNavigation() {
             })}
           </div>
 
-          {/* Right side - Notifications & Settings */}
+          {/* Right side - Language Toggle, Notifications & Settings */}
           <div className="flex items-center space-x-3">
+            {/* Language Toggle */}
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center space-x-2 px-3 py-2 text-gray-700 hover:text-white hover:bg-indigo-500 border-2 border-gray-300 hover:border-indigo-600 rounded-lg transition-all duration-200 shadow-sm"
+              title={`Switch to ${language === 'en' ? 'Croatian' : 'English'}`}
+            >
+              <Languages className="h-4 w-4" />
+              <span className="text-sm font-semibold">
+                {language === 'en' ? 'HRV' : 'ENG'}
+              </span>
+            </button>
+
             <button 
               className={cn(
                 "relative p-3 text-gray-700 hover:text-white hover:bg-red-500 border-2 border-gray-300 hover:border-red-600 rounded-lg transition-all duration-200 shadow-sm",
