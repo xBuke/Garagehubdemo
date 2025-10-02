@@ -43,6 +43,21 @@ export interface Car {
   model: string;
 }
 
+export interface Part {
+  id: string;
+  name: string;
+  category: string;
+  manufacturer: string;
+  partNumber: string;
+  stockQuantity: number;
+  minStockLevel: number;
+  unitPrice: number;
+  location: string;
+  supplier: string;
+  lastUpdated: string;
+  status: 'in_stock' | 'low_stock' | 'out_of_stock';
+}
+
 export interface Service {
   id: string;
   name: string;

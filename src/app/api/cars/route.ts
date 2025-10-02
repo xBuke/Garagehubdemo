@@ -26,3 +26,13 @@ const carsData = [
 export async function GET() {
   return NextResponse.json(carsData);
 }
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  const newCar = {
+    id: `CAR-${Date.now()}`,
+    ...body,
+  };
+  
+  return NextResponse.json(newCar, { status: 201 });
+}

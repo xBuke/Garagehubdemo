@@ -19,7 +19,8 @@ import {
   Wrench,
   BarChart3,
   Globe,
-  Languages
+  Languages,
+  Package
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from '@/lib/i18n';
@@ -61,9 +62,9 @@ const navigation = [
     hoverColor: 'hover:bg-indigo-50'
   },
   { 
-    name: 'cars', 
-    href: '/cars', 
-    icon: Car,
+    name: 'parts', 
+    href: '/parts', 
+    icon: Package,
     color: 'text-cyan-600 bg-cyan-100',
     hoverColor: 'hover:bg-cyan-50'
   },

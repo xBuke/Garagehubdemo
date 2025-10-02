@@ -33,7 +33,7 @@ const translations: Record<Language, Translations> = {
     leads: 'Leads',
     bookings: 'Bookings',
     customers: 'Customers',
-    cars: 'Cars',
+    parts: 'Parts',
     
     // Chat
     chatTitle: 'Hi! How can I help you with your vehicle today?',
@@ -69,7 +69,7 @@ const translations: Record<Language, Translations> = {
     leads: 'Potencijalni klijenti',
     bookings: 'Rezervacije',
     customers: 'Klijenti',
-    cars: 'Vozila',
+    parts: 'Dijelovi',
     
     // Chat
     chatTitle: 'Pozdrav! Kako vam mogu pomoći s vašim vozilom danas?',
