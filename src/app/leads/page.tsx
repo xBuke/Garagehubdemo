@@ -141,7 +141,7 @@ export default function LeadsPage() {
         {filteredLeads.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
+              <thead className="bg-gray-50 border-b border-gray-200 sticky top-0 z-10">
                 <tr>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Lead
@@ -171,8 +171,8 @@ export default function LeadsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                     className={cn(
-                      'hover:bg-gray-50 transition-all duration-200',
-                      index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50',
+                      'hover:bg-gray-50 transition-all duration-200 ease-in-out',
+                      index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30',
                       lead.urgent && 'border-l-4 border-red-500 bg-red-50/50'
                     )}
                   >

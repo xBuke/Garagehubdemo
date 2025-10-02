@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 interface Message {
   id: string;
-  channel: 'whatsapp' | 'facebook' | 'instagram' | 'sms';
+  channel: 'whatsapp' | 'facebook' | 'instagram' | 'sms' | 'site-chat';
   from: string;
   contact: string;
   text: string;
@@ -17,10 +17,39 @@ interface Message {
 
 const channels = [
   { id: 'all', name: 'All Messages', icon: MessageSquare, color: 'gray' },
+  { id: 'site-chat', name: 'Site Chat', icon: MessageSquare, color: 'indigo', emoji: '💻' },
   { id: 'whatsapp', name: 'WhatsApp', icon: MessageSquare, color: 'green', emoji: '📱' },
   { id: 'facebook', name: 'Facebook', icon: MessageSquare, color: 'blue', emoji: '📘' },
   { id: 'instagram', name: 'Instagram', icon: MessageSquare, color: 'pink', emoji: '📷' },
   { id: 'sms', name: 'SMS', icon: MessageSquare, color: 'gray', emoji: '💬' },
+];
+
+// Demo site chat messages for simulation
+const demoSiteChatMessages: Omit<Message, 'id'>[] = [
+  {
+    channel: 'site-chat',
+    from: 'Alex Johnson',
+    contact: 'alex.johnson@email.com',
+    text: 'Hi! I need urgent help with my 2020 Honda Civic. The engine is making strange noises.',
+    createdAt: new Date().toISOString(),
+    urgent: true
+  },
+  {
+    channel: 'site-chat',
+    from: 'Sarah Miller',
+    contact: 'sarah.m@gmail.com',
+    text: 'Can you check availability for brake service this week? My brakes are squeaking.',
+    createdAt: new Date(Date.now() - 300000).toISOString(),
+    urgent: false
+  },
+  {
+    channel: 'site-chat',
+    from: 'Mike Chen',
+    contact: 'mike.chen@company.com',
+    text: 'Emergency! My car won\'t start and I have an important meeting. Can someone help ASAP?',
+    createdAt: new Date(Date.now() - 600000).toISOString(),
+    urgent: true
+  }
 ];
 
 export default function InboxPage() {
@@ -44,6 +73,23 @@ export default function InboxPage() {
     };
 
     fetchMessages();
+  }, []);
+
+  // Simulate real-time messages from site chat
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomMessage = demoSiteChatMessages[Math.floor(Math.random() * demoSiteChatMessages.length)];
+      const newMessage: Message = {
+        ...randomMessage,
+        id: `site-${Date.now()}`,
+        createdAt: new Date().toISOString(),
+        urgent: Math.random() > 0.7 // 30% chance of being urgent
+      };
+
+      setMessages(prev => [newMessage, ...prev]);
+    }, Math.random() * 20000 + 20000); // Random interval between 20-40 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   const filteredMessages = activeChannel === 'all' 
@@ -136,7 +182,7 @@ export default function InboxPage() {
         </div>
 
         {/* Messages List */}
-        <div className="space-y-1">
+        <div className="divide-y divide-gray-200">
           {filteredMessages.length > 0 ? (
             filteredMessages.map((message, index) => (
               <motion.div
@@ -145,19 +191,22 @@ export default function InboxPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className={cn(
-                  'flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer group',
+                  'flex items-start space-x-4 p-4 hover:bg-gray-50 transition-all duration-200 ease-in-out cursor-pointer group',
+                  index % 2 === 1 && 'odd:bg-gray-50',
                   message.urgent && 'border-l-4 border-red-500 bg-red-50 hover:bg-red-100'
                 )}
               >
                 {/* Channel Icon */}
                 <div className={cn(
                   'h-12 w-12 rounded-full flex items-center justify-center flex-shrink-0',
+                  message.channel === 'site-chat' && 'bg-indigo-100',
                   message.channel === 'whatsapp' && 'bg-green-100',
                   message.channel === 'facebook' && 'bg-blue-100',
                   message.channel === 'instagram' && 'bg-pink-100',
                   message.channel === 'sms' && 'bg-gray-100'
                 )}>
                   <span className="text-lg">
+                    {message.channel === 'site-chat' && '💻'}
                     {message.channel === 'whatsapp' && '📱'}
                     {message.channel === 'facebook' && '📘'}
                     {message.channel === 'instagram' && '📷'}
@@ -188,7 +237,16 @@ export default function InboxPage() {
 
                 {/* Actions */}
                 <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200">
+                  <button 
+                    className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Simulate reply - would integrate with actual chat system
+                      if (message.channel === 'site-chat') {
+                        alert('Reply sent to website chat!');
+                      }
+                    }}
+                  >
                     <Reply className="h-4 w-4" />
                   </button>
                   <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200">

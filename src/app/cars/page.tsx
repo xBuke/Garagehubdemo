@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Customer, Car } from '@/lib/types';
@@ -64,7 +65,12 @@ export default function CarsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="space-y-6"
+    >
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Cars</h1>
@@ -79,41 +85,48 @@ export default function CarsPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {cars.map((car) => (
-          <Card key={car.id} className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CarIcon className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg">{car.model}</h3>
-                    <div className="flex items-center space-x-1 text-sm text-muted-foreground">
-                      <User className="h-4 w-4" />
-                      <span>{getCustomerName(car.customerId)}</span>
+        {cars.map((car, index) => (
+          <motion.div
+            key={car.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
+            <Card className="hover:shadow-lg transition-all duration-200 ease-in-out">
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                      <CarIcon className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg">{car.model}</h3>
+                      <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                        <User className="h-4 w-4" />
+                        <span>{getCustomerName(car.customerId)}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="text-sm text-muted-foreground">
-                    <p><strong>Vehicle ID:</strong> {car.id}</p>
+                  
+                  <div className="space-y-2">
+                    <div className="text-sm text-muted-foreground">
+                      <p><strong>Vehicle ID:</strong> {car.id}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex space-x-2">
+                    <Button size="sm" className="flex-1">
+                      <Settings className="mr-2 h-4 w-4" />
+                      Service History
+                    </Button>
+                    <Button variant="outline" size="sm">
+                      Book Service
+                    </Button>
                   </div>
                 </div>
-                
-                <div className="flex space-x-2">
-                  <Button size="sm" className="flex-1">
-                    <Settings className="mr-2 h-4 w-4" />
-                    Service History
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Book Service
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
 
@@ -134,6 +147,6 @@ export default function CarsPage() {
           </CardContent>
         </Card>
       )}
-    </div>
+    </motion.div>
   );
 }
