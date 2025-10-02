@@ -1,0 +1,26 @@
+[
+  {
+    "id": "S-1",
+    "name": "Oil change"
+  },
+  {
+    "id": "S-2",
+    "name": "Brake check"
+  },
+  {
+    "id": "S-3",
+    "name": "Inspection"
+  },
+  {
+    "id": "S-4",
+    "name": "Engine diagnostics"
+  },
+  {
+    "id": "S-5",
+    "name": "Air conditioning service"
+  },
+  {
+    "id": "S-6",
+    "name": "Tire change"
+  }
+]

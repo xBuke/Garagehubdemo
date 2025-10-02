@@ -1,0 +1,22 @@
+[
+  {
+    "id": "C-1",
+    "name": "Ana K.",
+    "contact": "+385 91 555 1234"
+  },
+  {
+    "id": "C-2",
+    "name": "Luka S.",
+    "contact": "+385 91 555 5678"
+  },
+  {
+    "id": "C-3",
+    "name": "Marina T.",
+    "contact": "+385 91 555 9012"
+  },
+  {
+    "id": "C-4",
+    "name": "Davor K.",
+    "contact": "+385 91 555 3456"
+  }
+]

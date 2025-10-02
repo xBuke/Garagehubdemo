@@ -1,0 +1,29 @@
+[
+  {
+    "id": "L-1001",
+    "name": "Ana K.",
+    "carModel": "VW Golf 7 1.6 TDI",
+    "issue": "Check engine light",
+    "contact": "+385 91 555 1234",
+    "date": "2025-10-01T10:30:00.000Z",
+    "urgent": true
+  },
+  {
+    "id": "L-1002",
+    "name": "Marko P.",
+    "carModel": "BMW 320d",
+    "issue": "Brake noise",
+    "contact": "+385 91 555 5678",
+    "date": "2025-10-02T14:15:00.000Z",
+    "urgent": false
+  },
+  {
+    "id": "L-1003",
+    "name": "Petra M.",
+    "carModel": "Audi A4",
+    "issue": "Oil change needed",
+    "contact": "+385 91 555 9012",
+    "date": "2025-10-02T16:45:00.000Z",
+    "urgent": false
+  }
+]

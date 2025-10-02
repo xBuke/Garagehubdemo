@@ -1,0 +1,29 @@
+[
+  {
+    "id": "M-2001",
+    "channel": "whatsapp",
+    "from": "Marin",
+    "contact": "+385915551111",
+    "text": "Auto mi vuče u lijevo pri kočenju, možete li danas?",
+    "createdAt": "2025-10-02T11:20:00.000Z",
+    "urgent": true
+  },
+  {
+    "id": "M-2002",
+    "channel": "facebook",
+    "from": "Ivana",
+    "contact": "ivana.horvat@email.com",
+    "text": "Trebam termin za veliki servis za Opel Astru",
+    "createdAt": "2025-10-02T09:30:00.000Z",
+    "urgent": false
+  },
+  {
+    "id": "M-2003",
+    "channel": "sms",
+    "from": "Tomislav",
+    "contact": "+385912345678",
+    "text": "Kada možete pogledati klimu u autu?",
+    "createdAt": "2025-10-02T13:45:00.000Z",
+    "urgent": false
+  }
+]

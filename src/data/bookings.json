@@ -1,0 +1,30 @@
+[
+  {
+    "id": "B-3001",
+    "customerName": "Luka S.",
+    "carModel": "Skoda Octavia",
+    "service": "Inspection",
+    "date": "2025-10-03",
+    "time": "09:00",
+    "notes": "Zvuk pri startu"
+  },
+  {
+    "id": "B-3002",
+    "customerName": "Marina T.",
+    "carModel": "Honda Civic",
+    "service": "Oil change",
+    "date": "2025-10-03",
+    "time": "11:30",
+    "notes": ""
+  },
+  {
+    "id": "B-3003",
+    "customerName": "Davor K.",
+    "carModel": "Ford Focus",
+    "service": "Brake check",
+    "date": "2025-10-04",
+    "time": "14:00",
+    "notes": "Klijent čuje škripanje",
+    "urgent": true
+  }
+]
