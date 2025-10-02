@@ -1,6 +1,4 @@
-import { NextResponse } from 'next/server';
-
-const carsData = [
+[
   {
     "id": "CAR-1",
     "customerId": "C-1",
@@ -21,8 +19,4 @@ const carsData = [
     "customerId": "C-4",
     "model": "Ford Focus"
   }
-];
-
-export async function GET() {
-  return NextResponse.json(carsData);
-}
+]

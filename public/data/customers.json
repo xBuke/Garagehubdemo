@@ -1,6 +1,4 @@
-import { NextResponse } from 'next/server';
-
-const customersData = [
+[
   {
     "id": "C-1",
     "name": "Ana K.",
@@ -21,8 +19,4 @@ const customersData = [
     "name": "Davor K.",
     "contact": "+385 91 555 3456"
   }
-];
-
-export async function GET() {
-  return NextResponse.json(customersData);
-}
+]

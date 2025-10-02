@@ -1,6 +1,4 @@
-import { NextResponse } from 'next/server';
-
-const servicesData = [
+[
   {
     "id": "S-1",
     "name": "Oil change"
@@ -25,8 +23,4 @@ const servicesData = [
     "id": "S-6",
     "name": "Tire change"
   }
-];
-
-export async function GET() {
-  return NextResponse.json(servicesData);
-}
+]

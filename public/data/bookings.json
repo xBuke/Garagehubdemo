@@ -1,6 +1,4 @@
-import { NextResponse } from 'next/server';
-
-const bookingsData = [
+[
   {
     "id": "B-3001",
     "customerName": "Luka S.",
@@ -29,18 +27,4 @@ const bookingsData = [
     "notes": "Klijent čuje škripanje",
     "urgent": true
   }
-];
-
-export async function GET() {
-  return NextResponse.json(bookingsData);
-}
-
-export async function POST(request: Request) {
-  const body = await request.json();
-  const newBooking = {
-    id: `B-${Date.now()}`,
-    ...body,
-  };
-  
-  return NextResponse.json(newBooking, { status: 201 });
-}
+]

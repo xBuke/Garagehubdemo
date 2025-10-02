@@ -1,6 +1,4 @@
-import { NextResponse } from 'next/server';
-
-const messagesData = [
+[
   {
     "id": "M-2001",
     "channel": "whatsapp",
@@ -28,19 +26,4 @@ const messagesData = [
     "createdAt": "2025-10-02T13:45:00.000Z",
     "urgent": false
   }
-];
-
-export async function GET() {
-  return NextResponse.json(messagesData);
-}
-
-export async function POST(request: Request) {
-  const body = await request.json();
-  const newMessage = {
-    id: `M-${Date.now()}`,
-    ...body,
-    createdAt: new Date().toISOString(),
-  };
-  
-  return NextResponse.json(newMessage, { status: 201 });
-}
+]

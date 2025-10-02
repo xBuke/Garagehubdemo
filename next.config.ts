@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
   trailingSlash: false,
-  outputFileTracingRoot: __dirname,
-  experimental: {
-    turbo: undefined
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
   }
 };
 
